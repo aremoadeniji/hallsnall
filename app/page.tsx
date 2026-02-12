@@ -1,65 +1,142 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-white text-zinc-900">
+      <header className="border-b">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+          <div className="font-semibold tracking-tight">Halls’n’All</div>
+          <nav className="flex items-center gap-3">
+            <a className="text-sm text-zinc-600 hover:text-zinc-900" href="#venues">
+              Venues
+            </a>
+            <a className="text-sm text-zinc-600 hover:text-zinc-900" href="#vendors">
+              List your venue
+            </a>
+            <button className="rounded-lg bg-zinc-900 px-3 py-2 text-sm font-medium text-white hover:bg-zinc-800">
+              Join early access
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <p className="mb-3 text-sm font-medium text-zinc-600">Boston-first launch</p>
+            <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
+              Find the right venue fast — without endless calls.
+            </h1>
+            <p className="mt-4 text-lg text-zinc-600">
+              Search and compare event halls, banquet spaces, and party venues. Save time with clear
+              pricing, capacity, amenities, and direct contact.
+            </p>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <button className="rounded-xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800">
+                Browse venues
+              </button>
+              <button className="rounded-xl border border-zinc-300 px-5 py-3 text-sm font-semibold hover:bg-zinc-50">
+                List your venue
+              </button>
+            </div>
+
+            <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
+              <div className="rounded-xl border p-4">
+                <div className="font-semibold">Capacity</div>
+                <div className="text-zinc-600">Know the fit</div>
+              </div>
+              <div className="rounded-xl border p-4">
+                <div className="font-semibold">Amenities</div>
+                <div className="text-zinc-600">Compare easily</div>
+              </div>
+              <div className="rounded-xl border p-4">
+                <div className="font-semibold">Direct</div>
+                <div className="text-zinc-600">Contact venues</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border bg-zinc-50 p-6">
+            <div className="text-sm font-semibold">Quick search</div>
+            <div className="mt-4 grid gap-3">
+              <input
+                className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/20"
+                placeholder="City (e.g., Boston)"
+                defaultValue="Boston"
+              />
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/20"
+                  placeholder="Guests (e.g., 120)"
+                />
+                <select className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/20">
+                  <option>Any event type</option>
+                  <option>Wedding</option>
+                  <option>Birthday</option>
+                  <option>Corporate</option>
+                  <option>Baby shower</option>
+                </select>
+              </div>
+              <button className="rounded-xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800">
+                Search
+              </button>
+              <p className="text-xs text-zinc-500">MVP: search UI now — results page next.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="venues" className="mx-auto max-w-6xl px-4 pb-14">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight">Featured venues</h2>
+            <p className="mt-1 text-sm text-zinc-600">Sample cards — we’ll connect real data next.</p>
+          </div>
+          <a className="text-sm font-medium text-zinc-900 hover:underline" href="#">
+            View all
+          </a>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {[
+            { name: "Grand Palace Hall", city: "Boston", cap: "Up to 250" },
+            { name: "Harborview Events", city: "Cambridge", cap: "Up to 180" },
+            { name: "Blue Sky Banquet", city: "Somerville", cap: "Up to 120" },
+          ].map((v) => (
+            <div key={v.name} className="rounded-2xl border p-5 hover:shadow-sm">
+              <div className="text-sm font-semibold">{v.name}</div>
+              <div className="mt-1 text-sm text-zinc-600">{v.city}</div>
+              <div className="mt-3 text-xs text-zinc-500">{v.cap}</div>
+              <button className="mt-4 w-full rounded-xl border border-zinc-300 px-4 py-2 text-sm font-semibold hover:bg-zinc-50">
+                View details
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="vendors" className="border-t bg-zinc-50">
+        <div className="mx-auto max-w-6xl px-4 py-12">
+          <h2 className="text-2xl font-semibold tracking-tight">Own a venue in Boston?</h2>
+          <p className="mt-2 max-w-2xl text-sm text-zinc-600">
+            Get listed early. We’re launching city-by-city and starting in Boston. You’ll get early
+            visibility and direct inquiries.
           </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button className="rounded-xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800">
+              Apply to list
+            </button>
+            <button className="rounded-xl border border-zinc-300 px-5 py-3 text-sm font-semibold hover:bg-white">
+              Learn how it works
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <footer className="border-t">
+        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-zinc-600">
+          © {new Date().getFullYear()} TinTin Holdings LLC — Halls’n’All
         </div>
-      </main>
-    </div>
+      </footer>
+    </main>
   );
 }
